@@ -2,28 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8236457c-3fcd-4ed9-b1b3-5d71a8702339" name="Default Changelist" comment="模拟Atm系统">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AtmProject/dao/AtmDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/dao/AtmDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/domain/Atm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/domain/Atm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/domain/trans.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/domain/trans.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AtmProject/service/AtmService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/service/AtmService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/AtmFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/RegistFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/AtmDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AtmDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Atm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Atm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/trans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/trans.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/AtmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AtmService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AtmFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AtmFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/RegistFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/RegistFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +83,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaWeb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../报表atm" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -146,8 +130,8 @@
       <workItem from="1641352926895" duration="3646000" />
       <workItem from="1641365174951" duration="12139000" />
       <workItem from="1641436857113" duration="4429000" />
-      <workItem from="1641441743774" duration="12421000" />
-      <workItem from="1641455888532" duration="338000" />
+      <workItem from="1641441743774" duration="18038000" />
+      <workItem from="1641460832559" duration="7000" />
     </task>
     <servers />
   </component>

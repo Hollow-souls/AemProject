@@ -15,7 +15,7 @@ public class AtmService {
     //登录
     public String login(String aname,String apassword){
         String result = "用户名或密码错误";
-        Atm atm = dao.selectOne(aname);
+        Atm atm = dao.login(aname);
         if(atm != null && atm.getApassword().equals(apassword)){
             result = "登录成功";
         }
@@ -76,6 +76,7 @@ public class AtmService {
     public boolean isExit(String aname){
         if(dao.selectOne(aname) != null){
             return true;
+
         }
         return false;
     }
