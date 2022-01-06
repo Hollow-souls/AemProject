@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 public class PutinStorage {
     // 得到数据库表数据
     public static Vector getRows(){
-        String sql_url = "jdbc:mysql://localhost:3306/haha";	//数据库路径（一般都是这样写），test是数据库名称
+        String sql_url = "jdbc:mysql://localhost:3309/haha";	//数据库路径（一般都是这样写），test是数据库名称
         String name = "root";		//用户名
-        String password = "123456";	//密码
+        String password = "190591071";	//密码
         Connection conn;
         PreparedStatement preparedStatement = null;
 
@@ -55,7 +55,7 @@ public class PutinStorage {
 
     // 得到数据库表头
     public static Vector getHead(){
-        String sql_url = "jdbc:mysql://localhost:3309//myatm?serverTimezone=CST";//数据库路径（一般都是这样写），test是数据库名称
+        String sql_url = "jdbc:mysql://localhost:3309/myatm?serverTimezone=CST";//数据库路径（一般都是这样写），test是数据库名称
         String name = "root";		//用户名
         String password = "190591071";	//密码
         Connection conn;

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class test {
     private String className = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3309//myatm?serverTimezone=CST";
+    private String url = "jdbc:mysql://localhost:3309/myatm?serverTimezone=CST";
     private String user = "root";
     private String password = "190591071";
 

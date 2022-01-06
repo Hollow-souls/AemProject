@@ -14,7 +14,7 @@ public class AtmDao {
     //对于atm表格的新增  修改  删除  查询单条记录
 
     private String className = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3309//myatm?serverTimezone=CST";
+    private String url = "jdbc:mysql://localhost:3309/myatm?serverTimezone=CST";
     private String user = "root";
     private String password = "190591071";
 

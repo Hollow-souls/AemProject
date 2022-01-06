@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8236457c-3fcd-4ed9-b1b3-5d71a8702339" name="Default Changelist" comment="模拟Atm系统">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="8236457c-3fcd-4ed9-b1b3-5d71a8702339" name="Default Changelist" comment="1.5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AtmProject/dao/AtmDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/dao/AtmDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/service/AtmService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/service/AtmService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/MyFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/MyFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AtmProject/view/PutinStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AtmProject/view/PutinStorage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/AtmDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AtmDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AtmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AtmService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../报表atm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaWeb" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -131,8 +128,23 @@
       <workItem from="1641365174951" duration="12139000" />
       <workItem from="1641436857113" duration="4429000" />
       <workItem from="1641441743774" duration="18038000" />
-      <workItem from="1641460832559" duration="7000" />
+      <workItem from="1641460832559" duration="648000" />
     </task>
+    <task id="LOCAL-00001" summary="1.5">
+      <created>1641460888808</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641460888808</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1.5">
+      <created>1641461180450</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641461180450</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -167,33 +179,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="模拟Atm系统" />
-    <option name="LAST_COMMIT_MESSAGE" value="模拟Atm系统" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/PutinStorage.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/AtmFrame.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/LoginFrame.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.5" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/domain/Atm.java">
