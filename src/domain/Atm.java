@@ -6,11 +6,13 @@ public class Atm {
 
 
     private String aname;
+    private String username;
     private String apassword;
     private Float abalance;//用包装类，因为数据库中的数据有可能是null
 
     public Atm(){}
-    public Atm(String aname,String apassword,float abalance){
+    public Atm(String username,String aname,String apassword,float abalance){
+        this.username=username;
         this.aname = aname;
         this.apassword = apassword;
         this.abalance = abalance;
@@ -38,5 +40,13 @@ public class Atm {
 
     public void setAbalance(Float abalance) {
         this.abalance = abalance;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

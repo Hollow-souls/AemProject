@@ -1,5 +1,6 @@
 package view;
 
+import domain.Atm;
 import domain.trans;
 import service.AtmService;
 import util.BaseFrame;
@@ -7,9 +8,12 @@ import util.MySpring;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
+import java.util.Vector;
 
 @SuppressWarnings("all")
 public class AtmFrame extends BaseFrame {
@@ -41,6 +45,7 @@ public class AtmFrame extends BaseFrame {
     private JLabel selectServerLabelCN = new JLabel("您好！请选择所需服务");
     private JLabel selectServerLabelEN = new JLabel("Hello,Please Select Service");
     private JButton dropButton = new JButton("查询");
+    private JButton tradeButton = new JButton("查询交易明细");
     private JButton exitButton = new JButton("退出");
     private JButton depositButton = new JButton("存款");
     private JButton withdrawalButton = new JButton("取款");
@@ -64,10 +69,10 @@ public class AtmFrame extends BaseFrame {
         balanceLabelEN.setHorizontalAlignment(JTextField.CENTER);
         balanceLabelEN.setText("Account Balance:￥"+atmService.query(aname));
 **/
-        selectServerLabelCN.setBounds(260,370,300,40);
+        selectServerLabelCN.setBounds(260,190,300,40);
         selectServerLabelCN.setFont(new Font("微软雅黑",Font.BOLD,24));
         selectServerLabelCN.setHorizontalAlignment(JTextField.CENTER);
-        selectServerLabelEN.setBounds(220,400,360,40);
+        selectServerLabelEN.setBounds(220,220,360,40);
         selectServerLabelEN.setFont(new Font("微软雅黑",Font.BOLD,24));
         selectServerLabelEN.setHorizontalAlignment(JTextField.CENTER);
 
@@ -75,6 +80,11 @@ public class AtmFrame extends BaseFrame {
         dropButton.setFont(new Font("微软雅黑",Font.BOLD,14));
         dropButton.setBackground(Color.lightGray);
         dropButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        tradeButton.setBounds(10,270,120,40);;
+        tradeButton.setFont(new Font("微软雅黑",Font.BOLD,14));
+        tradeButton.setBackground(Color.lightGray);
+        tradeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         exitButton.setBounds(10,390,120,40);
         exitButton.setFont(new Font("微软雅黑",Font.BOLD,14));
@@ -106,6 +116,7 @@ public class AtmFrame extends BaseFrame {
         mainPanel.add(selectServerLabelCN);
         mainPanel.add(selectServerLabelEN);
         mainPanel.add(dropButton);
+        mainPanel.add(tradeButton);
         mainPanel.add(exitButton);
         mainPanel.add(depositButton);
         mainPanel.add(withdrawalButton);
@@ -116,60 +127,50 @@ public class AtmFrame extends BaseFrame {
     @Override
     protected void addListener() {
 
-      /*  dropButton.addActionListener(new ActionListener() {
+        tradeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                balanceLabelCN.setBounds(240,200,300,40);
-                balanceLabelCN.setFont(new Font("微软雅黑",Font.BOLD,24));
-                balanceLabelCN.setHorizontalAlignment(JTextField.CENTER);
-                balanceLabelCN.setText("账户余额:￥"+atmService.query(aname));
-                balanceLabelEN.setBounds(240,240,400,40);
-                balanceLabelEN.setFont(new Font("微软雅黑",Font.BOLD,24));
-                balanceLabelEN.setHorizontalAlignment(JTextField.CENTER);
-                balanceLabelEN.setText("Account Balance:￥"+atmService.query(aname));
-
+                JDialog frame = new JDialog();//构造一个新的JFrame，作为新窗口。
+                JLabel jl = new JLabel();// 注意类名别写错了。
+                frame.setBounds(400, 300, 800, 600);//父窗口的坐标和大小
+                JTable table=null;
+                String[] index={"trans_count","trans_money","trans_time","trans_type"};
+                Object[][] data=new Object[atmService.query1(aname).size()][index.length];
+                for(int i=0;i<atmService.query1(aname).size();i++){
+                    trans trans=atmService.query1(aname).get(i);
+                    data[i][0]=trans.getTrans_account();
+                    data[i][1]=trans.getTrans_money();
+                    data[i][2]=trans.getTrans_time();
+                    data[i][3]=trans.getTrans_type();
+                }
+                DefaultTableModel defaultModel = new DefaultTableModel(data, index);
+                table=new JTable(defaultModel);
+                table.setPreferredScrollableViewportSize(new Dimension(200, 200));//JTable的高度和宽度按照设定
+                table.setFillsViewportHeight(true);
+                frame.add(table);
+                frame.setVisible(true);
             }
         });
-*/
+
 
         dropButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JDialog frame = new JDialog();//构造一个新的JFrame，作为新窗口。
                 JLabel jl = new JLabel();// 注意类名别写错了。
-                dropButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        JDialog frame = new JDialog();//构造一个新的JFrame，作为新窗口。
-                        JLabel jl = new JLabel();// 注意类名别写错了。
-//                frame.getContentPane().add(jl);
-//
-//                jl.setText("这是新窗口");
-//                jl.setBounds(400, 300, 800, 600);//父窗口的坐标和大小
-//                jl.setVerticalAlignment(JLabel.CENTER);
-//                jl.setHorizontalAlignment(JLabel.CENTER);// 注意方法名别写错了。
-//                // 参数 APPLICATION_MODAL：阻塞同一 Java 应用程序中的所有顶层窗口（它自己的子层次
-//                frame.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);    // 设置模式类型。
-//                frame.setVisible(true);
-                        JTable table=null;
-                        String[] index={"trans_count","trans_money","trans_time","trans_type"};
-                        Object[][] data=new Object[atmService.query(aname).size()][index.length];
-                        for(int i=0;i<atmService.query(aname).size();i++){
-                            trans trans=atmService.query(aname).get(i);
-                            data[i][0]=trans.getTrans_account();
-                            data[i][1]=trans.getTrans_money();
-                            data[i][2]=trans.getTrans_time();
-                            data[i][3]=trans.getTrans_type();
-                        }
-                        DefaultTableModel defaultModel = new DefaultTableModel(data, index);
-                        table=new JTable(defaultModel);
-                        table.setBackground(Color.cyan);
-                        table.setPreferredScrollableViewportSize(new Dimension(200, 200));//JTable的高度和宽度按照设定
-                        table.setFillsViewportHeight(true);
-                        frame.add(table);
-                        frame.setVisible(true);
-                    }
-                });
+                frame.getContentPane().add(jl);
+
+                //frame.getContentPane().add(balanceLabelCN);
+                //frame.getContentPane().add(balanceLabelEN);
+                frame.setBounds(400,300,400,300);
+                jl.setText("账户余额:￥"+atmService.query(aname));
+                jl.setFont(new Font("微软雅黑",Font.BOLD,24));
+                jl.setBounds(400, 300, 400, 300);//父窗口的坐标和大小
+                jl.setVerticalAlignment(JLabel.CENTER);
+                jl.setHorizontalAlignment(JLabel.CENTER);// 注意方法名别写错了。
+                // 参数 APPLICATION_MODAL：阻塞同一 Java 应用程序中的所有顶层窗口（它自己的子层次
+                frame.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);    // 设置模式类型。
+                frame.setVisible(true);
 
             }
         });

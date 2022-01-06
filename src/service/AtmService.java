@@ -6,7 +6,6 @@ import domain.trans;
 import util.MySpring;
 
 import java.util.List;
-import java.util.TreeMap;
 
 public class AtmService {
 
@@ -25,7 +24,10 @@ public class AtmService {
 
 
     //查询
-    public List<trans> query(String aname){
+    public float query(String aname){
+        return dao.selectOne(aname).getAbalance();
+    }
+    public List<trans> query1(String aname){
         return dao.selectTwo(aname);
     }
 
@@ -34,7 +36,7 @@ public class AtmService {
     public int deposit(String ananme,float money){
         Atm atm = dao.selectOne(ananme);
         atm.setAbalance(atm.getAbalance()+money);
-        return dao.update(atm);
+        return dao.update(atm,money,"存款");
     }
 
 
@@ -43,7 +45,7 @@ public class AtmService {
         Atm atm = dao.selectOne(aname);
         if(atm.getAbalance() >= money){
             atm.setAbalance(atm.getAbalance()-money);
-            return dao.update(atm);//1成功   0失败
+            return dao.update(atm,money,"取款");//1成功   0失败
         }else {
             return -1;//余额不足
         }
@@ -53,11 +55,12 @@ public class AtmService {
     //转账
     public int transfer(String from,String to,float money){
         Atm atmFrom = dao.selectOne(from);
+
         Atm atmTo = dao.selectOne(to);
         if(atmFrom.getAbalance()>=money){
             atmFrom.setAbalance(atmFrom.getAbalance()-money);
             atmTo.setAbalance(atmTo.getAbalance()+money);
-            return dao.update(atmFrom) + dao.update(atmTo);//2成功
+            return dao.update(atmFrom,money,"转出到"+atmTo.getAname()) + dao.update(atmTo,money,"转入来自"+atmFrom.getAname());//2成功
         }else{
             return -1;//余额不足
         }
@@ -65,8 +68,8 @@ public class AtmService {
     }
 
     //开户
-    public void open(String aname,String apassword,float abalance){
-        dao.insert(new Atm(aname,apassword,abalance));
+    public void open(String username,String aname,String apassword,float abalance){
+        dao.insert(new Atm(username,aname,apassword,abalance));
     }
 
     //设计一个方法  判断账号名是否存在

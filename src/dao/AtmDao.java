@@ -4,6 +4,7 @@ import domain.Atm;
 import domain.trans;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,58 @@ public class AtmDao {
 
     private Connection connection = null;
     private PreparedStatement pstat = null;
+
+
+    public List<trans> selectTwo(String aname){
+        trans trans = null;
+        String sql = "SELECT trans_account,trans_money,trans_time,trans_type FROM trans WHERE trans_account = ? ";
+        ResultSet rs = null;
+        List<trans> list=new ArrayList<>();
+        try{
+            Class.forName(className);
+            connection = DriverManager.getConnection(url,user,password);
+            pstat = connection.prepareStatement(sql);
+            pstat.setString(1,aname);
+            rs = pstat.executeQuery();
+            while(rs.next()){
+                trans= new trans();
+                trans.setTrans_account(rs.getString("trans_account"));
+                trans.setTrans_money(rs.getString("trans_money"));
+                trans.setTrans_time(rs.getString("trans_time"));
+                trans.setTrans_type(rs.getString("trans_type"));
+                list.add(trans);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if(rs != null){
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if(pstat != null){
+                    pstat.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if(connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+
+
+
 
 
     //设计一个方法，负责将某一条记录删掉
@@ -54,14 +107,16 @@ public class AtmDao {
 
     //设计一个方法，负责将一行新的记录写入数据库中
     public void insert(Atm atm){
-        String sql = "INSERT INTO account VALUES(?,?,?)";
+        String sql = "INSERT INTO account (username,aname,apassword,abalance) VALUES(?,?,?,?)";
         try{
             Class.forName(className);
             connection = DriverManager.getConnection(url,user,password);
             pstat = connection.prepareStatement(sql);
-            pstat.setString(1,atm.getAname());
-            pstat.setString(2,atm.getApassword());
-            pstat.setFloat(3,atm.getAbalance());
+            pstat.setString(1,atm.getUsername());
+            pstat.setString(2,atm.getAname());
+            pstat.setString(3,atm.getApassword());
+            pstat.setFloat(4,atm.getAbalance());
+            pstat =connection.prepareStatement("INSERT INTO log_table (account,TIME,TYPE,remarks) VALUEs("+atm.getAname()+",now(),'开户','') ");
             pstat.executeUpdate();
         } catch(Exception e){
             e.printStackTrace();
@@ -88,7 +143,7 @@ public class AtmDao {
     //查询一行记录（这是复用代码：登录、查询...）
     public Atm selectOne(String aname){
         Atm atm = null;
-        String sql = "SELECT ANAME,APASSWORD,ABALANCE FROM account WHERE ANAME = ? ";
+        String sql = "SELECT username,ANAME,APASSWORD,ABALANCE FROM account WHERE ANAME = ? ";
         ResultSet rs = null;
         try{
             Class.forName(className);
@@ -97,14 +152,8 @@ public class AtmDao {
             pstat.setString(1,aname);
             rs = pstat.executeQuery();
             if(rs.next()){
-                //用户存在，查询到了一行记录
-                //  然后需要把这一行记录返回出去，那么这个方法的返回值是什么呢？
-                //      是返回类型是ResultSet，然后return rs;吗？
-                //      不行，因为rs在执行返回语句之前会被关闭
-                //  那么就需要一个小容器来作为返回类型了
-                //      数组，集合，对象？
-                //      对象是最好的选择
                 atm = new Atm();
+                atm.setUsername(rs.getString("username"));
                 atm.setAname(rs.getString("aname"));
                 atm.setAbalance(rs.getFloat("abalance"));
                 atm.setApassword(rs.getString("apassword"));
@@ -137,9 +186,11 @@ public class AtmDao {
         return atm;
     }
 
+    
+
 
     //修改一行记录（复用代码：取款，存款）
-    public int update(Atm atm){
+    public int update(Atm atm,float money,String type){
         int count = 0;//记录更改的行数
         String sql = "UPDATE account SET APASSWORD = ?,ABALANCE = ? WHERE ANAME = ?";
         try{
@@ -149,6 +200,11 @@ public class AtmDao {
             pstat.setString(1,atm.getApassword());
             pstat.setFloat(2,atm.getAbalance());
             pstat.setString(3,atm.getAname());
+
+
+
+            pstat =connection.prepareStatement("INSERT INTO trans (trans_account,trans_money,trans_time,trans_type) VALUES ("+atm.getAname()+","+money+",now(),'"+type+"');");
+
             count = pstat.executeUpdate();
         } catch(Exception e){
             e.printStackTrace();
@@ -170,54 +226,4 @@ public class AtmDao {
         }
         return count;
     }
-
-    public List<trans> selectTwo(String aname){
-        trans trans = null;
-        String sql = "SELECT trans_account,trans_money,trans_time,trans_type FROM trans WHERE trans_account = ? ";
-        ResultSet rs = null;
-        List<trans> list=new ArrayList<>();
-        try{
-            Class.forName(className);
-            connection = DriverManager.getConnection(url,user,password);
-            pstat = connection.prepareStatement(sql);
-            pstat.setString(1,aname);
-            rs = pstat.executeQuery();
-            while (rs.next()){
-                trans= new trans();
-                trans.setTrans_account(rs.getString("trans_account"));
-                trans.setTrans_money(rs.getString("trans_money"));
-                trans.setTrans_time(rs.getString("trans_time"));
-                trans.setTrans_type(rs.getString("trans_type"));
-                System.out.println(trans);
-                list.add(trans);
-            }
-        } catch(Exception e){
-            e.printStackTrace();
-        }finally {
-            try {
-                if(rs != null){
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                if(pstat != null){
-                    pstat.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                if(connection != null){
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return list;
-    }
 }
-
-

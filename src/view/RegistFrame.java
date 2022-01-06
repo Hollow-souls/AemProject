@@ -32,6 +32,10 @@ public class RegistFrame extends BaseFrame {
     private JLabel titleLanel = new JLabel("请您填写信息");
     private JLabel accountLabel = new JLabel("请输入账号：");
     private JTextField accountField = new JTextField();
+
+    private JLabel usernametLabel = new JLabel("请输入开户名：");
+    private JTextField usernameField = new JTextField();
+
     private JLabel passwordLabel = new JLabel("请输入密码：");
     private JTextField passwordField = new JTextField();
     private JLabel balancedLabel = new JLabel("请输入金额：");
@@ -44,10 +48,17 @@ public class RegistFrame extends BaseFrame {
     @Override
     protected void setFontAndSoOn() {
         mainPanel.setLayout(null);
-        logoLabel.setBounds(135,40,40,40);
+        logoLabel.setBounds(135,10,40,40);
         logoLabel.setIcon(this.drawImage("src//img//logo.jpg",40,40));
-        titleLanel.setBounds(185,40,200,40);
+        titleLanel.setBounds(185,10,200,40);
         titleLanel.setFont(new Font("微软雅黑",Font.ITALIC,24));
+
+
+        usernametLabel.setBounds(40,50,140,40);
+        usernametLabel.setFont(new Font("微软雅黑",Font.BOLD,18));
+        usernameField.setBounds(170,55,260,40);
+        usernameField.setFont(new Font("微软雅黑",Font.BOLD,18));
+
 
         accountLabel.setBounds(40,100,140,40);
         accountLabel.setFont(new Font("微软雅黑",Font.BOLD,18));
@@ -84,6 +95,8 @@ public class RegistFrame extends BaseFrame {
         mainPanel.add(titleLanel);
         mainPanel.add(accountField);
         mainPanel.add(accountLabel);
+        mainPanel.add(usernameField);
+        mainPanel.add(usernametLabel);
         mainPanel.add(passwordLabel);
         mainPanel.add(passwordField);
         mainPanel.add(balancedLabel);
@@ -99,6 +112,7 @@ public class RegistFrame extends BaseFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //获取名字，密码，余额
+                String username = usernameField.getText();
                 String aname = accountField.getText();
                 String apassword = passwordField.getText();
                 String abalance = balancedField.getText();
@@ -109,7 +123,7 @@ public class RegistFrame extends BaseFrame {
                     RegistFrame.this.reset();
                 }else {
                     try{
-                        atmService.open(aname,apassword,Float.parseFloat(abalance));
+                        atmService.open(username,aname,apassword,Float.parseFloat(abalance));
                         JOptionPane.showMessageDialog(RegistFrame.this,"注册成功，请登录");
                         RegistFrame.this.back();
                     } catch(NumberFormatException nfe){
