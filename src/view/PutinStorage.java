@@ -55,9 +55,9 @@ public class PutinStorage {
 
     // 得到数据库表头
     public static Vector getHead(){
-        String sql_url = "jdbc:mysql://150.158.17.181:3306/myatm?serverTimezone=CST";//数据库路径（一般都是这样写），test是数据库名称
+        String sql_url = "jdbc:mysql://localhost:3309//myatm?serverTimezone=CST";//数据库路径（一般都是这样写），test是数据库名称
         String name = "root";		//用户名
-        String password = "Xiaohua0528.";	//密码
+        String password = "190591071";	//密码
         Connection conn;
         PreparedStatement preparedStatement = null;
 

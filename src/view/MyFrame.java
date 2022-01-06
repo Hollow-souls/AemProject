@@ -122,9 +122,9 @@ public class MyFrame extends JFrame{
                 }
 
                 // 以下均为对数据库的操作
-                String sql_url = "jdbc:mysql://localhost:3306/haha";	//数据库路径（一般都是这样写），haha是数据库名称
+                String sql_url = "jdbc:mysql://localhost:3309//haha";	//数据库路径（一般都是这样写），haha是数据库名称
                 String name = "root";		//用户名
-                String password = "123456";	//密码
+                String password = "190591071";	//密码
                 Connection conn;
                 PreparedStatement preparedStatement = null;
 
